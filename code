@@ -1,0 +1,38 @@
+import random
+
+# Définir les choix possibles
+choix = ["pierre", "papier", "ciseaux"]
+
+# Fonction pour déterminer le gagnant
+def determiner_gagnant(joueur, ordinateur):
+    if joueur == ordinateur:
+        return "Égalité !"
+    elif (joueur == "pierre" and ordinateur == "ciseaux") or \
+         (joueur == "papier" and ordinateur == "pierre") or \
+         (joueur == "ciseaux" and ordinateur == "papier"):
+        return "Vous avez gagné !"
+    else:
+        return "L'ordinateur a gagné !"
+
+# Boucle principale du jeu
+while True:
+    # Demander à l'utilisateur de faire un choix
+    joueur = input("Choisissez pierre, papier ou ciseaux (ou 'quitter' pour arrêter) : ").lower()
+    
+    # Quitter le jeu si l'utilisateur le souhaite
+    if joueur == "quitter":
+        print("Merci d'avoir joué ! À bientôt !")
+        break
+    
+    # Vérifier si le choix est valide
+    if joueur not in choix:
+        print("Choix invalide. Veuillez choisir entre pierre, papier ou ciseaux.")
+        continue
+    
+    # L'ordinateur choisit au hasard
+    ordinateur = random.choice(choix)
+    print(f"L'ordinateur a choisi : {ordinateur}")
+    
+    # Déterminer le gagnant
+    resultat = determiner_gagnant(joueur, ordinateur)
+    print(resultat)
